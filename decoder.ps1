@@ -52,7 +52,3 @@ foreach ($codeChar in $codeArray) {
 }
 
 Write-Host $result
-
-# TODO: If a letter, swap it with its corresponding letter in the decoder and add it to a new array.
-
-# TODO: If not letter, just move it to the new array.
