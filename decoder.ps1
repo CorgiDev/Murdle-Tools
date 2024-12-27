@@ -4,21 +4,22 @@
 # Example Code: TVMVIZO XLUUVV WRW MLG SZEV GSV XILDYZI
 # Result: GENERAL COFFE DID NOT HAVE THE CROWBAR
 
-# foreach ($<item> in $<collection>){<statement list>}
-# function createDecoder() {$decoder = Read-Host - Prompt "Enter the translation line for your Murdle. This is the second line that corresponds with the regular ABCDEFGHIJKLMNOPQRSTUVWXYZ line."}
-$result=""
-
 # Create decoder
-$decoderEntry = Read-Host - Prompt "Enter the translation line for your Murdle. This is the second line that corresponds with the regular ABCDEFGHIJKLMNOPQRSTUVWXYZ line. Must be 26 characters to work properly."
-$decoder = $decoderEntry.ToCharArray()
+function New-Decoder () {
+    $decoderEntry = Read-Host -Prompt "Enter the translation line for your Murdle. This is the second line that corresponds with the regular ABCDEFGHIJKLMNOPQRSTUVWXYZ line. Must be 26 characters to work properly."
+    $newDecoder = $decoderEntry.ToCharArray()
+    return $newDecoder
+}
 
-# TODO: Take in a code from the user
+# Take in new decoding string.
+$decoder = New-Decoder
+
+# Take in a code from the user and make it into an array.
 $scrambledPhrase = Read-Host -Prompt "Enter the code from your Murdle puzzle."
-
-# TODO: Make the provided string into an array with each character an item in the array.
 $codeArray = $scrambledPhrase.ToCharArray()
 
-# TODO: Review each character in the array.
+# Review each character in the array, and create result.
+$result=""
 foreach ($codeChar in $codeArray) {
     switch ($codeChar) {
         A {$result += $decoder[0]}
