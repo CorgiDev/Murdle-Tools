@@ -11,8 +11,15 @@ function New-Decoder () {
     return $newDecoder
 }
 
-# Take in new decoding string.
-$decoder = New-Decoder
+$murdleBookAsk = Read-Host -Prompt "Are you solving a puzzle from a Murdle book?"
+
+if ($murdleBookAsk.ToLowerCase() -eq "yes"){
+    # Script to select which book
+}
+else {
+    # Take in new decoding string.
+    $decoder = New-Decoder
+}
 
 # Take in a code from the user and make it into an array.
 $scrambledPhrase = Read-Host -Prompt "Enter the code from your Murdle puzzle."
