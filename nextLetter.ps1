@@ -1,20 +1,5 @@
-# Decoder Code
-# Murdle Volume 1 Examples
-## Example 1: TVMVIZO XLUUVV WRW MLG SZEV GSV XILDYZI
-## Example 2: ZTVMG RMP SZW Z NVWRFN-DVRTSG DVZKLM
-
-# Create decoder
-function New-Decoder () {
-    $decoderEntry = Read-Host -Prompt "Enter the translation line for your Murdle. This is the second line that corresponds with the regular ABCDEFGHIJKLMNOPQRSTUVWXYZ line. Must be 26 characters to work properly."
-    $newDecoder = $decoderEntry.ToCharArray()
-    return $newDecoder
-}
-
-# Take in new decoding string.
-# $decoder = New-Decoder
-
-# Murdle Volume 1 Code
-$decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"
+# This only works if it is a next letter code.
+$decoder = "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A"
 
 # Take in a code from the user and make it into an array.
 $scrambledPhrase = Read-Host -Prompt "Enter the code from your Murdle puzzle."
