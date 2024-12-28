@@ -4,27 +4,49 @@
 ## Example 2: ZTVMG RMP SZW Z NVWRFN-DVRTSG DVZKLM
 
 # Create decoder
-function New-Decoder () {
+function Custom-Decoder () {
     $decoderEntry = Read-Host -Prompt "Enter the translation line for your Murdle. This is the second line that corresponds with the regular ABCDEFGHIJKLMNOPQRSTUVWXYZ line. Must be 26 characters to work properly."
-    $newDecoder = $decoderEntry.ToCharArray()
-    return $newDecoder
+    $customDecoder = $decoderEntry.ToCharArray()
+    return $customDecoder
 }
 
-# Take in new decoding string.
-# $decoder = New-Decoder
+function Book-Selection () {
+    $selectedBook = Read-Host -Prompt "Enter the number cooresponding with the Murdle Volume."
+}
+
+# Preset Variables
+$result=""
+$decoder=""
+
+# Take in a code from the user and make it into an array.
+$decoderSelection = Read-Host -Prompt "Enter the number corresponding with what kind of cipher you are using: 1 = Next Letter Code, 2 = Murdle Book Code, or 3 = Other"
+
+switch ($decoderSelection) {
+    1 {
+        # This only works if it is a Next Letter Code.
+        $decoder = "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A"
+    }
+    2 {
+        $decoder = Book-Selection
+    }
+    3 {
+        # Take in new decoding string.
+        $decoder = Custom-Decoder
+    }
+    Default {
+        Write-Host "The volume you selected isn't added to this app yet. You'll need to manually enter the code translation line."
+        $decoder = Custom-Decoder
+    }
+}
 
 # Murdle Volume 1 Code
 $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"
-
-# This only works if it is a Next Letter Code.
-# $decoder = "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A"
 
 # Take in a code from the user and make it into an array.
 $scrambledPhrase = Read-Host -Prompt "Enter the code from your Murdle puzzle."
 $codeArray = $scrambledPhrase.ToCharArray()
 
 # Review each character in the array, and create result.
-$result=""
 foreach ($codeChar in $codeArray) {
     switch ($codeChar) {
         A {$result += $decoder[0]}
