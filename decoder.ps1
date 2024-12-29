@@ -23,11 +23,47 @@ function Numerals-Prep () {
     Write-Host "YOU MUST group the numerals as shown in your puzzle for accurate translation."
     Write-Host "Use the letter i, v, and x."
     Write-Host "Upper or lower case is not important."
-    $scrambledPhrase = Read-Host -Prompt "Enter the numerals from your Murdle puzzle.";
+    $scrambledNumerals = Read-Host -Prompt "Enter the numerals from your Murdle puzzle.";
+    $splitOption =  [System.StringSplitOptions]::None;
+    $preppedNumerals = $scrambledNumerals.Split(" ", $splitOption);
+    return $numeralsArray
 }
 
-function Numerals-TranslationV1 () {
-    
+# Primarily used for Murdl The School of Mystery
+function Numerals-Translation ($numeralsArray, $decoder) {
+    $numeralResult ="";
+    foreach ($numeralPiece in $numeralsArray) {
+        switch ($numeralPiece) {
+            I {$numeralResult += $decoder[0]}
+            II {$numeralResult += $decoder[1]}
+            III {$numeralResult += $decoder[2]}
+            IV {$numeralResult += $decoder[3]}
+            V {$numeralResult += $decoder[4]}
+            VI {$numeralResult += $decoder[5]}
+            VII {$numeralResult += $decoder[6]}
+            VIII {$numeralResult += $decoder[7]}
+            IX {$numeralResult += $decoder[8]}
+            X {$numeralResult += $decoder[9]}
+            XI {$numeralResult += $decoder[10]}
+            XII {$numeralResult += $decoder[11]}
+            XIII {$numeralResult += $decoder[12]}
+            XIV {$numeralResult += $decoder[13]}
+            XV {$numeralResult += $decoder[14]}
+            XVI {$numeralResult += $decoder[15]}
+            XVII {$numeralResult += $decoder[16]}
+            XVIII {$numeralResult += $decoder[17]}
+            XIX {$numeralResult += $decoder[18]}
+            XX {$numeralResult += $decoder[19]}
+            XXI {$numeralResult += $decoder[20]}
+            XXII {$numeralResult += $decoder[21]}
+            XXIII {$numeralResult += $decoder[22]}
+            XXIV {$numeralResult += $decoder[23]}
+            XXV {$numeralResult += $decoder[24]}
+            XXVI {$numeralResult += $decoder[25]}
+            Default {$numeralResult += $numeralPiece} 
+        }
+    }
+    return $numeralResult;
 }
 
 function Alphabet-Translation ($codeArray, $decoder) {
@@ -82,7 +118,10 @@ function Book-Selection () {
         #3 {$decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"}
         #4 {$decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"}
         8 {
-            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"
+            $numeralsDecoder = "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
+            $userNumerals = Numerals-Prep
+            $result = Numerals-Translation($userNumerals, $numeralsDecoder)
+            Write-Host $result;
         }
         Default {
             Write-Host "The number you entered does not appear to match an available option at this time.";
