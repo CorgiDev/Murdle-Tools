@@ -3,6 +3,7 @@
 ## Example 1: TVMVIZO XLUUVV WRW MLG SZEV GSV XILDYZI
 ## Example 2: ZTVMG RMP SZW Z NVWRFN-DVRTSG DVZKLM
 # Murdle Volume 2 Examples
+## Example 1: 
 # Murdle: The School of Mystery Exmples
 ## Example 1: I II XV XV XI XXI XIX V IV XX XV II V
 
@@ -10,7 +11,7 @@
 # FUNCTIONS
 ######################################################
 function Custom-Decoder () {
-    $decoderEntry = Read-Host -Prompt "Enter the translation line for your Murdle. This is the second line that corresponds with the regular ABCDEFGHIJKLMNOPQRSTUVWXYZ line. Must be 26 characters to work properly.";
+    $decoderEntry = Read-Host -Prompt "Enter the translation line for your Murdle. This is the line that equates to what your entry would convert to. Must be 26 characters to work properly.";
     $customDecoder = $decoderEntry.ToCharArray();
     return $customDecoder
 }
@@ -124,49 +125,45 @@ function Book-Selection () {
     Write-Host "7 = The Case of the Seven Skulls"
     Write-Host "8 = The School of Mystery"
     $selectBook = Read-Host -Prompt "Enter the number cooresponding with the Murdle Volume you are using."
+
     Switch ($selectBook) {
         1 {
-            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"
+            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A";
             $userCode = Simple-Prep
             $result = Alphabet-Translation($userCode, $decoder)
             Write-Host $result
         }
         2 {
-            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"
-            $result = ""
+            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A";
             Write-Host "This book has not yet been added to this script."
             break
         }
         3 {
-            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"
-            $result = ""
+            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A";
             Write-Host "This book has not yet been added to this script."
             break
         }
         4 {
-            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A"
-            $result = ""
+            $decoder = "Z","Y","X","W","V","U","T","S","R","Q","P","O","N","M","L","K","J","I","H","G","F","E","D","C","B","A";
             Write-Host "This book has not yet been added to this script."
             break
         }
         8 {
-            $numeralsDecoder = "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
-            $userNumerals = Numerals-Prep
-            $result = Numerals-Translation($userNumerals, $numeralsDecoder)
+            $numeralsDecoder = "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z";
+            $userNumerals = Numerals-Prep;
+            $result = Numerals-Translation($userNumerals, $numeralsDecoder);
             Write-Host $result;
         }
         Default {
             Write-Host "The number you entered does not appear to match an available option at this time.";
             Write-Host "Please manually enter the code translation line. This will typically be the line opposite the regular ABCD line.";
             $decoder = Custom-Decoder;
+            $userCode = Simple-Prep;
+            $result = Alphabet-Translation($userCode, $decoder);
+            Write-Host $result;
         }
     }
 }
-
-######################################################
-# Preset Variables
-######################################################
-$result="";
 
 ######################################################
 # Main Script
@@ -180,27 +177,27 @@ $decoderSelection = Read-Host -Prompt "Enter the number corresponding with what 
 switch ($decoderSelection) {
     1 {
         # This only works if it is a Next Letter Code.
-        $decoder = "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A";
-        $codeArray = Simple-Prep
-        $result = Alphabet-Translation ($codeArray, $decoder)
+        $decoder1 = "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A";
+        $codeArray1 = Simple-Prep;
+        $result = Alphabet-Translation ($codeArray1, $decoder1);
         Write-Host $result;
     }
     2 {
-        # Allows user to select one of the books I have set up here.
-        $decoder = Book-Selection;
+        # Allows user to select one of the books I have set up here.;
+        $decoder2 = Book-Selection;
         Write-Host $result;
     }
     3 {
         # Take in new decoding string.
-        $decoder = Custom-Decoder;
-        $codeArray = Simple-Prep
-        $result = Alphabet-Translation ($codeArray, $decoder)
+        $decoder3 = Custom-Decoder;
+        $codeArray3 = Simple-Prep;
+        $result = Alphabet-Translation ($codeArray3, $decoder3);
         Write-Host $result;
     }
     Default {
         Write-Host "The option you entered doesn't correspond to an available option. You'll need to manually enter the code translation line."
         $decoder = Custom-Decoder;
-        Simple-Translate
+        Simple-Translate;
         Write-Host $result;
     }
 }

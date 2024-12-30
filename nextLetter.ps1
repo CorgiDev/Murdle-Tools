@@ -1,3 +1,4 @@
+# Example Code: SGD RGNQSDRS VZR MNS AX SGD ZMBHDMS QTHMR
 # This only works if it is a next letter code.
 $decoder = "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A"
 
