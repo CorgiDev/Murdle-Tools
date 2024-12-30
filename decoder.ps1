@@ -176,11 +176,8 @@ $decoderSelection = Read-Host -Prompt "Enter the number corresponding with what 
 
 switch ($decoderSelection) {
     1 {
-        # This only works if it is a Next Letter Code.
-        $decoder1 = "B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","A";
-        $codeArray1 = Simple-Prep;
-        $result = Alphabet-Translation ($codeArray1, $decoder1);
-        Write-Host $result;
+        $nextLetterScript = $PSScriptRoot+"\nextLetter.ps1"
+        . $nextLetterScript
     }
     2 {
         # Allows user to select one of the books I have set up here.;
